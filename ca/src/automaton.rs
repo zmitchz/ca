@@ -1,28 +1,25 @@
-use std::fmt::Display;
 use std::ops::{Add, Mul};
 
+use crate::grid::apoint::APoint;
 use crate::grid::grid_2d::Grid2D;
 use crate::grid::point::IsPoint;
-use crate::rule::Rules;
+use crate::rule::{Rule, Rules};
+use crate::state::State;
 
 /// struct containing all the cells, rules / transitions, and cells that need 
 /// to be updated for the current step 
-pub struct Automaton2D<'a, T, U, V>
-    where
-    T: IsPoint<U>,
-    U: Display + Copy + Ord + PartialEq + Add<Output = U> + Mul<Output = U>,
-    V: Fn(V) -> U {
-    grid: Grid2D<'a, T, U>,
-    rule: Rules<V, U>,
+pub struct Automaton2D<'a, T, U> 
+    where 
+    U: Fn(State<T>) -> State<T>, {
+    grid: Grid2D<'a, APoint<'a, i32, State<'a, T>>, i32>, 
+    rule: Rules<State<'a, T>, U>,
     update_cells:  Option<Vec<&'a T>>
 }
 
-impl<'a, T, U, V> Automaton2D<'a, T, U, V>
+impl<'a, T, U> Automaton2D<'a, T, U>
 where
-    T: IsPoint<U>,
-    U: Display + Copy + Ord + PartialEq + Add<Output = U> + Mul<Output = U>,
-    V: Fn(V) -> U {
-    pub fn new() -> Automaton2D<'a, T, U, V> {
+    U: Fn(State<T>) -> State<T>, {
+    pub fn new() -> Automaton2D<'a, T, U> {
         Automaton2D {
             grid: Grid2D::new(),
             rule: Rules::new(),
@@ -30,7 +27,7 @@ where
         }
     }
 
-    pub fn set_seed(&mut self, seed: Vec<&'a T>){
+    pub fn set_seed(&mut self, seed: Vec<&'a APoint<'a, i32, State<'a, T>>>){
         self.grid.set_points(seed);
     }
 }

@@ -41,9 +41,6 @@ where
 
 #[cfg(test)]
 mod tests {
-    use crate::grid::grid_2d::*;
-    use crate::grid::point::APoint;
-
     // #[test]
     // fn new_empty_test() {
     //     let grid: Grid2D<i32> = Grid2D::new_empty(5, 5);

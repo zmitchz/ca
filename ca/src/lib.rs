@@ -23,5 +23,7 @@
 //!     - [ ] Documentation
 
 pub mod automaton;
+mod errors;
 pub mod grid;
 pub mod rule;
+pub mod state;
