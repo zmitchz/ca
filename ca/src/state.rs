@@ -17,6 +17,10 @@ impl<'a, T> State<'a, T>  {
         &self.val
     }
 
+    pub fn name(&self) -> &str {
+        self.name
+    }
+
     pub fn set_val(&mut self, new_val: T) {
         self.val = new_val;
     }

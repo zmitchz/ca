@@ -32,8 +32,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// use ca::grid::point::APoint;
-    /// let point: APoint<i32, i32> = APoint::new(10, 10, None, "p1".to_string());
+    /// use ca::grid::apoint::APoint;
+    /// let point: APoint<i32, i32> = APoint::new(10, 10, None);
     /// ```
     pub fn new(x: T, y: T, v: Option<State<'a, U>>) -> APoint<'a, T, U> {
         APoint {

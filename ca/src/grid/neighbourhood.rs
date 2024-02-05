@@ -41,9 +41,14 @@ pub struct MissingNeighbourhoodSize;
 pub fn neighbourhood_coords(
     n_type: NType,
     n_size: Option<i32>,
-    point: Point<i32>,
+    loc: Point<i32>,
 ) -> Result<Neighbours, MissingNeighbourhoodSize> {
-    relative_neighbourhood_coords(n_type, n_size)
+    let mut neighbours = Vec::new();
+    relative_neighbourhood_coords(n_type, n_size)?;
+    convert_relative_point_to_absolute(&mut neighbours, &loc);
+    remove_invalid(&mut neighbours, &Point::new(n_size.unwrap(), n_size.unwrap()));
+    remove_self(&mut neighbours, &loc);
+    Ok(neighbours)
 }
 
 pub fn relative_neighbourhood_coords(

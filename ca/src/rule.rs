@@ -29,7 +29,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// let rules = crate::rule::Rules::new();
+    /// use ca::rule::*;
+    /// let rules: Rules<i32, fn(i32) -> i32> = Rules::new();
     ///
     /// ```
     pub fn new() -> Rules<T, U> {
@@ -43,8 +44,9 @@ where
     /// # Examples
     ///
     /// ```
-    /// let mut rules = crate::rule::Rules::new();
-    /// let r = crate::rule::create_rules("RULES");
+    /// use ca::rule::*;
+    /// let mut rules: Rules<i32, fn(i32) ->i32> = Rules::new();
+    /// let r = create_rules("RULES");
     /// rules.set_rules(r);
     ///
     /// ```
@@ -54,13 +56,13 @@ where
 }
 
 // TODO
-pub fn create_rules<T, U>(rules: &str) -> HashMap<T, U> {
-    let mut states: T;
-    let mut transisitions: Vec<U> = Vec::new();
-
-    let mut rules = HashMap::new();
-    rules
-}
+// pub fn create_rules<T, U>(rules: &str) -> HashMap<T, U> {
+//     let mut states: T;
+//     let mut transisitions: Vec<U> = Vec::new();
+//
+//     let mut rules = HashMap::new();
+//     rules
+// }
 
 
 pub trait Sum<T> {
