@@ -46,7 +46,7 @@ where
     /// ```
     /// use ca::rule::*;
     /// let mut rules: Rules<i32, fn(i32) ->i32> = Rules::new();
-    /// let r = create_rules("RULES");
+    /// let r = Rule::create_rules("RULES");
     /// rules.set_rules(r);
     ///
     /// ```
