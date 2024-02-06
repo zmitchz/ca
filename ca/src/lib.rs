@@ -25,5 +25,7 @@
 pub mod automaton;
 mod errors;
 pub mod grid;
+pub mod parse;
 pub mod rule;
 pub mod state;
+
