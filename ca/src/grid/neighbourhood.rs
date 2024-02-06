@@ -1,8 +1,11 @@
 use crate::grid::point::*;
 
+// TODO: Rewrite
+
 
 pub type Neighbours = Vec<Point<i32>>;
 
+/// Different 2Dimensional Neighbourhoods for a cell
 pub enum NType {
     Moore,
     VonNeumann,
@@ -10,7 +13,9 @@ pub enum NType {
     ManhattanDistance,
 }
 
-pub enum Direction {
+/// The 8 possible directions to move in a 2 dimensional grid
+/// North is above current cell
+enum Direction {
     North,
     NorthEast,
     East,

@@ -65,6 +65,7 @@ where
 // }
 
 
+/// Implement trait to more easily execute more complex summations 
 pub trait Sum<T> {
     fn sum(&self) -> Result<T, SumError>;
 }
